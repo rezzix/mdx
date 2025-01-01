@@ -5,6 +5,7 @@ class Note {
     String text
     Note parent
     NoteType type
+    AppUser owner
 
     static hasMany = [subnotes: Note] 
 
@@ -17,5 +18,6 @@ class Note {
         text nullable: true
         parent nullable: true
         type nullable: true
+        owner nullable: false
     }
 }

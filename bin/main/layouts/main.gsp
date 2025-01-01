@@ -30,7 +30,37 @@
 
 </nav>
 
-<g:layoutBody/>
+<g:if test="${session.loggedin || flash.sessionExpiredRedirect}">
+
+    <g:layoutBody/>
+</g:if>
+<g:else>
+    <div class="w-100 d-flex justify-content-center align-items-center">
+        <div class="w-100 shadow bg-white p-4 m-4" style="max-width: 600px">
+            <g:form controller='security' action='login' method='POST' id='loginForm' class='cssform d-flex flex-column'
+                    style="gap: 10px">
+                <div class="text-center text-uppercase">
+                    <h1 class="font-weight-bold">Login</h1>
+                </div>
+
+                <div class="d-flex flex-column">
+                    <label for='username'>Username:</label>
+                    <input type='text' class='text_ px-3 py-2 rounded-lg' name='username' id='username' autofocus/>
+                </div>
+
+                <div class="d-flex flex-column">
+                    <label for='password'>Password:</label>
+                    <input type='password' class='text_ px-3 py-2 rounded-lg' name='password' id='password'/>
+                </div>
+
+                <div class="text-center mt-4">
+                    <input type='submit' class="btn primary-bg text-white font-weight-bold px-4 py-2" id="submit"
+                           value='Login'/>
+                </div>
+            </g:form>
+        </div>
+    </div>
+</g:else>
 
 <div class="footer row" role="contentinfo">
     <div class="col">
